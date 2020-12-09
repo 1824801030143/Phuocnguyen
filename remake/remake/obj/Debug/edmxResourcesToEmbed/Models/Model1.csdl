@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NuocHoaShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUser" Type="Int32" />
+    <Property Name="IsAdmin" Type="Int32" />
+    <NavigationProperty Name="UserWeb" Relationship="Self.FK__Admin__IDUser__24927208" FromRole="Admin" ToRole="UserWeb" />
+  </EntityType>
+  <EntityType Name="Bill">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDUser" Type="Int32" />
+    <Property Name="SDT" Type="Int32" />
+    <Property Name="Ten_khach_hang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Dia_chi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Tong_tien" Type="Int32" />
+    <Property Name="Ngay_xuat" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="UserWeb" Relationship="Self.FK__Bill__IDUser__1B0907CE" FromRole="Bill" ToRole="UserWeb" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__IDCateg__145C0A3F" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="IDUser" Type="Int32" />
+    <Property Name="IDProduct" Type="Int32" />
+    <Property Name="Noi_Dung" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__FeedBack__IDProd__21B6055D" FromRole="FeedBack" ToRole="Product" />
+    <NavigationProperty Name="UserWeb" Relationship="Self.FK__FeedBack__IDUser__20C1E124" FromRole="FeedBack" ToRole="UserWeb" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDOrder" Type="Int32" />
+    <Property Name="IDProduct" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderDeta__IDOrd__286302EC" FromRole="OrderDetails" ToRole="OrderProduct" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__IDPro__29572725" FromRole="OrderDetails" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDay" Type="DateTime" Precision="0" />
+    <Property Name="ShipStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
+    <Property Name="PayStatus" Type="Boolean" />
+    <Property Name="IDUser" Type="Int32" />
+    <Property Name="Discout" Type="Int32" />
+    <Property Name="Cancel" Type="Boolean" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDOrd__286302EC" FromRole="OrderProduct" ToRole="OrderDetails" />
+    <NavigationProperty Name="UserWeb" Relationship="Self.FK__OrderProd__IDUse__1DE57479" FromRole="OrderProduct" ToRole="UserWeb" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCategory" Type="Int32" />
+    <Property Name="IDProvider" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Poppular" Type="Boolean" />
+    <Property Name="Sale" Type="Boolean" />
+    <Property Name="New" Type="Boolean" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UrlImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Product__IDCateg__145C0A3F" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="FeedBacks" Relationship="Self.FK__FeedBack__IDProd__21B6055D" FromRole="Product" ToRole="FeedBack" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDPro__29572725" FromRole="Product" ToRole="OrderDetails" />
+    <NavigationProperty Name="Provider" Relationship="Self.FK__Product__IDProvi__15502E78" FromRole="Product" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__IDProvi__15502E78" FromRole="Provider" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="UserWeb">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ReenterPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Reenteremail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TypeUser" Type="Int32" />
+    <NavigationProperty Name="Admins" Relationship="Self.FK__Admin__IDUser__24927208" FromRole="UserWeb" ToRole="Admin" />
+    <NavigationProperty Name="Bills" Relationship="Self.FK__Bill__IDUser__1B0907CE" FromRole="UserWeb" ToRole="Bill" />
+    <NavigationProperty Name="FeedBacks" Relationship="Self.FK__FeedBack__IDUser__20C1E124" FromRole="UserWeb" ToRole="FeedBack" />
+    <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__IDUse__1DE57479" FromRole="UserWeb" ToRole="OrderProduct" />
+  </EntityType>
+  <Association Name="FK__Admin__IDUser__24927208">
+    <End Role="UserWeb" Type="Self.UserWeb" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserWeb">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Bill__IDUser__1B0907CE">
+    <End Role="UserWeb" Type="Self.UserWeb" Multiplicity="0..1" />
+    <End Role="Bill" Type="Self.Bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserWeb">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bill">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__IDCateg__145C0A3F">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IDCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FeedBack__IDProd__21B6055D">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FeedBack">
+        <PropertyRef Name="IDProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FeedBack__IDUser__20C1E124">
+    <End Role="UserWeb" Type="Self.UserWeb" Multiplicity="0..1" />
+    <End Role="FeedBack" Type="Self.FeedBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserWeb">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="FeedBack">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__IDOrd__286302EC">
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="IDOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__IDPro__29572725">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="IDProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderProd__IDUse__1DE57479">
+    <End Role="UserWeb" Type="Self.UserWeb" Multiplicity="0..1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserWeb">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__IDProvi__15502E78">
+    <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IDProvider" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NuocHoaShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Bills" EntityType="Self.Bill" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="FeedBacks" EntityType="Self.FeedBack" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Providers" EntityType="Self.Provider" />
+    <EntitySet Name="UserWebs" EntityType="Self.UserWeb" />
+    <AssociationSet Name="FK__Admin__IDUser__24927208" Association="Self.FK__Admin__IDUser__24927208">
+      <End Role="UserWeb" EntitySet="UserWebs" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Bill__IDUser__1B0907CE" Association="Self.FK__Bill__IDUser__1B0907CE">
+      <End Role="UserWeb" EntitySet="UserWebs" />
+      <End Role="Bill" EntitySet="Bills" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__IDCateg__145C0A3F" Association="Self.FK__Product__IDCateg__145C0A3F">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FeedBack__IDProd__21B6055D" Association="Self.FK__FeedBack__IDProd__21B6055D">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="FeedBack" EntitySet="FeedBacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FeedBack__IDUser__20C1E124" Association="Self.FK__FeedBack__IDUser__20C1E124">
+      <End Role="UserWeb" EntitySet="UserWebs" />
+      <End Role="FeedBack" EntitySet="FeedBacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__IDOrd__286302EC" Association="Self.FK__OrderDeta__IDOrd__286302EC">
+      <End Role="OrderProduct" EntitySet="OrderProducts" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__IDPro__29572725" Association="Self.FK__OrderDeta__IDPro__29572725">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderProd__IDUse__1DE57479" Association="Self.FK__OrderProd__IDUse__1DE57479">
+      <End Role="UserWeb" EntitySet="UserWebs" />
+      <End Role="OrderProduct" EntitySet="OrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__IDProvi__15502E78" Association="Self.FK__Product__IDProvi__15502E78">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

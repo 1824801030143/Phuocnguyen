@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NuocHoaShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__IDCateg__145C0A3F" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDOrder" Type="Int32" />
+    <Property Name="IDProduct" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Price" Type="Double" />
+    <NavigationProperty Name="OrderProduct" Relationship="Self.FK__OrderDeta__IDOrd__20C1E124" FromRole="OrderDetails" ToRole="OrderProduct" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__IDPro__21B6055D" FromRole="OrderDetails" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDay" Type="DateTime" Precision="0" />
+    <Property Name="ShipStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
+    <Property Name="PayStatus" Type="Boolean" />
+    <Property Name="IDUser" Type="Int32" />
+    <Property Name="Discout" Type="Int32" />
+    <Property Name="Cancel" Type="Boolean" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDOrd__20C1E124" FromRole="OrderProduct" ToRole="OrderDetails" />
+    <NavigationProperty Name="UserWeb" Relationship="Self.FK__OrderProd__IDUse__1DE57479" FromRole="OrderProduct" ToRole="UserWeb" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserPermissions" Relationship="NuocHoaShopModel.FK__UserPermi__IDPer__33D4B598" FromRole="Permission" ToRole="UserPermission" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCategory" Type="Int32" />
+    <Property Name="IDProvider" Type="Int32" />
+    <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Double" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Poppular" Type="Boolean" />
+    <Property Name="Sale" Type="Double" />
+    <Property Name="New" Type="Boolean" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="UrlImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Product__IDCateg__145C0A3F" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDPro__21B6055D" FromRole="Product" ToRole="OrderDetails" />
+    <NavigationProperty Name="Provider" Relationship="Self.FK__Product__IDProvi__15502E78" FromRole="Product" ToRole="Provider" />
+  </EntityType>
+  <EntityType Name="Provider">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK__Product__IDProvi__15502E78" FromRole="Provider" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="TypeUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Disscount" Type="Int32" />
+    <NavigationProperty Name="UserWebs" Relationship="Self.FK__UserWeb__TypeUse__1B0907CE" FromRole="TypeUser" ToRole="UserWeb" />
+    <NavigationProperty Name="UserPermissions" Relationship="NuocHoaShopModel.FK__UserPermi__IDTyp__34C8D9D1" FromRole="TypeUser" ToRole="UserPermission" />
+  </EntityType>
+  <EntityType Name="UserPermission">
+    <Key>
+      <PropertyRef Name="IDPermission" />
+      <PropertyRef Name="IDTypeUser" />
+    </Key>
+    <Property Name="IDPermission" Type="Int32" Nullable="false" />
+    <Property Name="IDTypeUser" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Permission" Relationship="NuocHoaShopModel.FK__UserPermi__IDPer__33D4B598" FromRole="UserPermission" ToRole="Permission" />
+    <NavigationProperty Name="TypeUser" Relationship="NuocHoaShopModel.FK__UserPermi__IDTyp__34C8D9D1" FromRole="UserPermission" ToRole="TypeUser" />
+  </EntityType>
+  <EntityType Name="UserWeb">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ResetPasswordCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TypeUser" Type="Int32" />
+    <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__IDUse__1DE57479" FromRole="UserWeb" ToRole="OrderProduct" />
+    <NavigationProperty Name="TypeUser1" Relationship="Self.FK__UserWeb__TypeUse__1B0907CE" FromRole="UserWeb" ToRole="TypeUser" />
+  </EntityType>
+  <Association Name="FK__Product__IDCateg__145C0A3F">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IDCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__IDOrd__20C1E124">
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="IDOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__IDPro__21B6055D">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="IDProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderProd__IDUse__1DE57479">
+    <End Role="UserWeb" Type="Self.UserWeb" Multiplicity="0..1" />
+    <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserWeb">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderProduct">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__IDProvi__15502E78">
+    <End Role="Provider" Type="Self.Provider" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IDProvider" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserWeb__TypeUse__1B0907CE">
+    <End Role="TypeUser" Type="Self.TypeUser" Multiplicity="0..1" />
+    <End Role="UserWeb" Type="Self.UserWeb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserWeb">
+        <PropertyRef Name="TypeUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NuocHoaShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
+    <EntitySet Name="Permissions" EntityType="Self.Permission" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Providers" EntityType="Self.Provider" />
+    <EntitySet Name="TypeUsers" EntityType="Self.TypeUser" />
+    <EntitySet Name="UserPermissions" EntityType="Self.UserPermission" />
+    <EntitySet Name="UserWebs" EntityType="Self.UserWeb" />
+    <AssociationSet Name="FK__Product__IDCateg__145C0A3F" Association="Self.FK__Product__IDCateg__145C0A3F">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__IDOrd__20C1E124" Association="Self.FK__OrderDeta__IDOrd__20C1E124">
+      <End Role="OrderProduct" EntitySet="OrderProducts" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__IDPro__21B6055D" Association="Self.FK__OrderDeta__IDPro__21B6055D">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderProd__IDUse__1DE57479" Association="Self.FK__OrderProd__IDUse__1DE57479">
+      <End Role="UserWeb" EntitySet="UserWebs" />
+      <End Role="OrderProduct" EntitySet="OrderProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__IDProvi__15502E78" Association="Self.FK__Product__IDProvi__15502E78">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserWeb__TypeUse__1B0907CE" Association="Self.FK__UserWeb__TypeUse__1B0907CE">
+      <End Role="TypeUser" EntitySet="TypeUsers" />
+      <End Role="UserWeb" EntitySet="UserWebs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPermi__IDPer__33D4B598" Association="NuocHoaShopModel.FK__UserPermi__IDPer__33D4B598">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="UserPermission" EntitySet="UserPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPermi__IDTyp__34C8D9D1" Association="NuocHoaShopModel.FK__UserPermi__IDTyp__34C8D9D1">
+      <End Role="TypeUser" EntitySet="TypeUsers" />
+      <End Role="UserPermission" EntitySet="UserPermissions" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__UserPermi__IDPer__33D4B598">
+    <End Type="NuocHoaShopModel.Permission" Role="Permission" Multiplicity="1" />
+    <End Type="NuocHoaShopModel.UserPermission" Role="UserPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserPermission">
+        <PropertyRef Name="IDPermission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPermi__IDTyp__34C8D9D1">
+    <End Type="NuocHoaShopModel.TypeUser" Role="TypeUser" Multiplicity="1" />
+    <End Type="NuocHoaShopModel.UserPermission" Role="UserPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserPermission">
+        <PropertyRef Name="IDTypeUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

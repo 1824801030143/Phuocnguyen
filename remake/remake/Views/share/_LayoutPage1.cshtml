@@ -1,0 +1,242 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="menutren">
+        <nav class="navbar navbar-expand-lg  text-uppercase fixed-top" id="mainNav" style="font-size:20px;">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="@Url.Content("~/Home/Index")"><img src="~/image/home.png" style="width:30px; margin-left:150px;" /></a>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto" style="margin-right:100px;">
+                        <li class="nav-item mx-3 mx-lg-3"><a class="nav-link py-2 px-0 px-lg-3 rounded js-scroll-trigger">@Html.ActionLink("Yêu Thích", "Index")</a></li>
+                        <li class="nav-item mx-3 mx-lg-3"><a class="nav-link py-2 px-0 px-lg-3 rounded js-scroll-trigger">@Html.Action("CartPartial","Cart")</a> <img src="~/image/cart_big.png" /></li>
+
+                        <li class="nav-item mx-3 mx-lg-3">
+                            <a class="nav-link py-2 px-0 px-lg-3 rounded js-scroll-trigger"></a>
+                            <img src="~/image/account.png" />
+                            @if (Session["user"] == null)
+                            {
+                                @Html.ActionLink("Đăng nhập", "Login", "Account")
+                                @Html.ActionLink("      Đăng ký", "Signup", "Account")
+                            }
+                            else
+                            {
+                                @Session["user"].ToString()
+                                @Html.ActionLink("Đăng xuất", "logout", "Home")
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--khung bao trang-->
+    <div id="baotrang" style="padding-top:100px;">
+        <!--Banner-->
+        <div id="banner" style="background:url(image/images.jpg)">
+            <div class="logo">
+                <img src="~/image/5.png" style="width:130px; height:130px; float:left;" />
+                <p>NUOCHOA<span>SHOP</span></p>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                <div class="timkiem">
+                    <table border="0" style="margin-right:5px; margin:0;">
+                        <tr>
+                            <td>@Html.TextBox("SearchString") </td>
+                            <td><input type="submit" value="Tìm Kiếm" style="-moz-border-radius: 10px;-webkit-border-radius: 10px; height:30px; background:url(image/linkz_menu.png); color:#CCC; font-weight:bold;" /></td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </div><!--hết banner-->
+        <!--menu sp-->
+        <div id="menu">
+            @Html.Action("MenuPartial","Home")
+           
+        </div>
+        <div id="khoangtrong">
+
+        </div>
+        <!--hết menu sp-->
+        <!--cột trái-->
+        <div id="cottrai">
+            <div id="chon">
+                <p style="text-align:center; color:#F60;"> TÙY CHỌN</p>
+                <hr />
+                <p> <span>Nhãn Hiệu</span>
+                <p>
+                    <select>
+                        <option>Chọn một nhãn hiệu..</option>
+                        <option>Adidas</option>
+                        <option>Xman</option>
+                        <option>Romano</option>
+                        <option>fobos</option>
+                        <option>Axe</option>
+                        <option>Azzaro</option>
+                        <option>Chanel</option>
+                        <option>Dier</option>
+                        <option>D&G </option>
+                        <option>Gucci</option>
+                        <option>DKNY</option>
+                        <option>Calvin klein</option>
+                        <option>Lanvin</option>
+                        <option>Lancome</option>
+                        <option>Polike</option>
+                        <option>Parada</option>
+                        <option>Tour</option>
+                        <option>Gucci</option>
+                        <option>DKNY</option>
+                        <option>Calvin klein</option>
+                        <option>Lanvin</option>
+                        <option>Lancome</option>
+                        <option>Polike</option>
+                        <option>Parada</option>
+                        <option>Tour</option>
+                    </select>
+                </p>
+
+                <p><span>Năm Phát Hành</span>
+                <p>
+                    <select>
+                        <option>Chọn một đặc tính..</option>
+                        <option>1921</option>
+                        <option>1934</option>
+                        <option>1943</option>
+                        <option>1945</option>
+                        <option>1954</option>
+                        <option>1958</option>
+                        <option>1968</option>
+                        <option>1969</option>
+                        <option>1970</option>
+                        <option>1975</option>
+                        <option>1980</option>
+                        <option>1990</option>
+                        <option>1994</option>
+                        <option>1999</option>
+                        <option>2001</option>
+                        <option>2005</option>
+                        <option>2008</option>
+                        <option>2009</option>
+                        <option>2010</option>
+                        <option>2011</option>
+                        <option>2012</option>
+                        <option>2013</option>
+                    </select>
+                </p>
+
+                <p><span>Nồng Độ</span>
+                <p>
+                    <select>
+                        <option>Chọn một đặc tính..</option>
+                        <option>Eau De Cologne</option>
+                        <option>Eau De Parfume</option>
+                        <option>Eau De Toillete</option>
+                    </select>
+                </p>
+
+                <p><span>Giới Tính</span>
+                <p>
+                    <select>
+                        <option>Chọn một đặc tính..</option>
+                        <option>Nam</option>
+                        <option>Nữ</option>
+                    </select>
+                </p>
+                <p><input type="submit" value="Tìm Nhanh" /></p>
+            </div>
+
+            <div id="timtheogia">
+                <p style="text-align:center; color:#F60;"> TÌM THEO GIÁ</p>
+                <hr />
+                <p><a href="">Từ 100k - 200k</a></p>
+                <p><a href="">Từ 200k - 500k</a></p>
+                <p><a href="">Từ 500k - 1000k</a></p>
+                <p><a href="">Từ 1000k - 2000k</a></p>
+                <p><a href="">Từ 2000k - 3000k</a></p>
+                <p><a href="">Từ 3000k trở lên</a></p>
+            </div>
+
+            <!--đăng kí mail---->
+            <div id="Camnhan" style="background:#CCC;">
+                <div id="box-email-container">
+                    <div id="box-email-title" style="text-align:center; color:#F60;">THÔNG BÁO</div>
+                    <div id="box-email-content" style="margin:auto; padding:5px;">
+                        <hr>
+                        <div style="padding-top: 5px; font-weight:normal; font-size:15px; padding:4px;">Đăng ký để nhận những thông tin khuyến mãi sớm nhất!</div>
+                        <form>
+                            <div><input id="Promotion_name" value=" Họ tên" type="text"></div>
+                            <div style="padding-top:10px;"><input id="Promotion_email" value=" Email" type="text"></div>
+                            <div style="padding-top:15px; margin-left : 50px;"><input 0="/user/promotion" type="submit" value=" Gửi" style="width:70px;height:20px"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!----hết đk mail----->
+            <!---quảng cáo---------->
+            <div id="quangcao">
+                <p>Chat với nick hỗ trợ nuochoashop.com ( giờ hành chính )</p>
+                <p>( sáng 8h30 -> 12h30, chiều 2h30 -> 22h )</p>
+                <img src="~/image/online.gif" />
+                <img src="~/image/online.gif" />
+                <img src="~/image/online.gif" />
+            </div>
+
+            <div id="quangcao2">
+                <img src="~/image/lb4.png" style="width:200px; text-align:center; height:377px;" />
+            </div>
+            <!----hết QC----->
+
+        </div>
+        <div id="cotphai">
+            @RenderBody()
+        </div>
+    </div>
+    <div id="footer" class="modal-footer" style="margin-top:400px;">
+
+            <footer>
+                <ul class="nav" style="align-content:center;margin-right:280px;">
+                    <li class="nav-item" style="margin-right:30px;">
+                        <a href="#" style="color:black;">Chính sách giao hàng</a>
+                    </li>
+                    <li class="nav-item" style="margin-right:30px">
+                        <a href="#" style="color:black;">Tuyển dụng</a>
+                    </li>
+                    <li class="nav-item" style="margin-right:30px">
+                        <a href="#" style="color:black;">Phương thức thanh toán</a>
+                    </li>
+                    <li class="nav-item" style="margin-right:30px">
+                        <a href="#" style="color:black;">Yêu cầu</a>
+                    </li>
+                    <li class="nav-item" style="margin-right:30px">
+                        <a href="#" style="color:black;">Nhận xét sản phẩm</a>
+                    </li>
+                    <li class="nav-item" style="margin-right:30px">
+                        <a href="#" style="color:black;">Đăng kí theo dõi</a>
+                    </li>
+                    <li class="nav-item" style="margin-right:30px">
+                        <a href="@Url.Content("~/Product/Index")"  style="color:black;">Quản lí sản phẩm</a>
+                    </li>
+                </ul>
+            </footer>
+
+            <p>
+                ©2020 Nuochoashop - địa chỉ mua nước hoa online với hơn 2000 mặt hàng nước hoa cao cấp. Cung cấp các loại nước hoa hàng hiệu, nước hoa chính hãng được nhập khẩu từ nhiều thương hiệu nổi tiếng trên thế giới đặc biệt là nước hoa Pháp. Tư vấn và giao hàng trên cả nước. Hệ thống nhân viên giao hàng phong phú phục vụ quý khách hài lòng một cách ưng ý . Mang lại cho khách hàng 1 sản phẩm chính hãng được nhập khẩu từ nhiều thương hiệu nổi tiếng trên thế giới đặc biệt là nước hoa Pháp và nhiều nước<br />
+                Add : 6,Trần Văn Ơn,TP. Thủ Dầu Một, Bình Dương - Hotline: 0123456789 <br />
+                info@nuochoashop.com. Giờ mở cửa: 9h - 21h Thứ hai đến thứ Bảy. Chủ nhật đặt hàng qua điện thoại
+            </p>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@using remake.Models;
+
+@model List<Cart>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/share/_LayoutPage1.cshtml";
+}
+
+@if (Model.Count == 0)
+{
+    <h2>Giỏ hàng rỗng</h2>
+}
+else
+{
+    <div class="container">
+        <table border="0" style="height:100px; width:700px;" align="center" cellpadding="6" cellspacing="19">
+            <thead>
+                <tr>
+                    <th style="width:50%">Tên Sản Phẩm</th>
+                    <th style="width:10%">Giá</th>
+                    <th style="width:8%">Số lượng</th>
+                    <th style="width:22%" class="text-center">Thành tiền</th>
+                    <th style="width:10%"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price</td>
+                        <td>@Html.ActionLink("Xóa","DeleteCart",new { @id = item.IDProduct})</td>
+                    </tr>
+                   
+                }
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td>
+                        <a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+                    </td>
+                    <td colspan="2" class="hidden-xs"> </td>
+                    <td class="hidden-xs text-center">
+                        <strong>Tổng tiền 500.000 đ</strong>
+                    </td>
+                    <td>
+                        @using(Html.BeginForm("OrderProduct","Cart",FormMethod.Post))
+                        {
+                            <input type="submit" class="btn btn-success" value="Đặt Hàng">
+                        }
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+}
+

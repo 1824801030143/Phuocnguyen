@@ -1,0 +1,43 @@
+﻿@using remake.Models
+@model IEnumerable<Product>
+@using remake.Helper
+
+
+        <div class="container" >
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <div id="tab1" class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                <h2 style="margin-top:10px;">Sản Phẩm Hot</h2>
+                                @foreach (var item in Model.Take(9))
+                                {
+                                    <div class="product" style="width:170px;float:left;margin-right:40px;margin-left:20px;height:350px;">
+                                        <div class="product-img">
+                                            @Html.Image(item.Image, "image")
+                                            <div class="product-label">
+                                                <span class="sale">@item.Sale%</span>
+                                                <span class="new">NEW</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <h3 class="product-name"><a href="@Url.Action("DetailsProduct","Product",new { id = item.ID})">@item.ProductName</a></h3>
+                                            <h4 class="product-price">@item.Price đ</h4>
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                            </div>
+                                            <div class="addtocart" id="addtocart">
+                                                <a href="@Url.Action("AddCart","Cart",new { @idpd = item.ID, @strURL = Request.Url.ToString()})" style="font-size:15px"><i class="fa fa-shopping-cart"></i>Mua Hàng</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                 }
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

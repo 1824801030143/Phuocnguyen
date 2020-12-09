@@ -1,0 +1,433 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+}
+
+/* đăng kí đăng nhâp*/
+
+
+#baotrang {
+	width: 1000px;
+	margin: 0 auto;
+	height: 1600px;
+}
+
+#banner {
+	width: 100%;
+	height: 150px;
+	background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+}
+
+.logo {
+	margin-left: 20px;
+}
+
+	.logo p {
+		float: left;
+		margin-top: 50px;
+		font-size: 30px;
+		font-family: 'Comic Sans MS', cursive;
+		color: #666;
+	}
+
+		.logo p span {
+			color: #F60;
+		}
+
+.timkiem {
+	float: right;
+	margin-top: 25px;
+	font-weight: bold;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	margin-right: 25px;
+}
+
+/*menu dưới banner */
+#menu {
+	background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+	float: left;
+	width: 100%;
+	-moz-border-radius-topleft: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-webkit-border-top-right-radius: 10px;
+	border-bottom: solid 3px #F60;
+}
+
+	#menu ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+	}
+
+		#menu ul li {
+			float: left;
+			position: relative;
+			text-align: center;
+		}
+
+			#menu ul li a {
+				margin: 5px;
+				padding: 5px;
+				display: block;
+				color: #666;
+				text-decoration: none;
+				-moz-border-radius: 10px;
+				-webkit-border-radius: 10px;
+				width: 110px;
+			}
+
+				#menu ul li a:hover {
+					background: #FFF;
+					color: #666;
+				}
+
+			#menu ul li ul {
+				position: absolute;
+				display: none;
+				width: 750px;
+				background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 50%);
+				-moz-border-radius-bottomleft: 10px;
+				-webkit-border-bottom-left-radius: 10px;
+				-moz-border-radius-bottomright: 10px;
+				-webkit-border-bottom-right-radius: 10px;
+				border: 1px solid #999;
+			}
+
+			#menu ul li:hover ul {
+				display: block;
+				float: left;
+			}
+
+				#menu ul li:hover ul li {
+					width: 150px;
+					float: left;
+				}
+
+#khoangtrong {
+	width: 100%;
+	height: 80px;
+	background: #FFF;
+}
+
+/*nội dung */
+
+/*cột trái*/
+#cottrai {
+	width: 200px;
+	height: 1474px;
+	float: left;
+	border: 1px solid #CCC;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#chon p {
+	margin: auto;
+	padding: 5px;
+}
+
+	#chon p span {
+		margin-left: 6px;
+		color: #333;
+	}
+
+#timtheogia {
+	padding: 10px;
+}
+
+	#timtheogia p {
+		margin-left: 10px;
+		padding: 5px;
+		color: #333;
+	}
+
+		#timtheogia p a {
+			color: #333;
+			text-decoration: none;
+		}
+
+			#timtheogia p a:hover {
+				color: #999;
+				text-decoration: underline;
+			}
+
+#camnhan {
+	padding: 10px;
+}
+
+#binhluan {
+	padding: 10px;
+}
+
+#quangcao {
+	font-size: 10px;
+	margin: 0;
+	padding: 5px;
+	color: #333;
+}
+
+	#quangcao img {
+		padding: 5px;
+		margin-left: 25px;
+	}
+
+/*hết cột trái*/
+
+/*cột phải */
+#cotphai {
+	width: 780px;
+	height: 1474px;
+	border: 1px solid #CCC;
+	float: right;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#hot {
+	width: 780px;
+	height: 180px;
+	margin: 0 auto;
+}
+
+	#hot p {
+		text-align: center;
+		background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+		color: #DC1E21;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+
+	#hot a img:hover {
+		border: #F60 1px solid;
+	}
+
+#moive {
+	padding-top: 10px;
+	width: 780px;
+	height: 420px;
+	margin: 0 auto;
+}
+
+	#moive p {
+		padding-left: 20px;
+		background-image: linear-gradient(45deg, #ee9ca7 0%, #ffdde1 100%);
+		color: #DC1E21;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+	}
+
+
+
+#hang1 {
+	width: 780px;
+	height: 190px;
+	margin: 5px;
+	padding: 5px;
+}
+
+	#hang1 span {
+		color: #09F;
+	}
+
+	#hang1 a,
+	#hang2 a {
+		color: #333;
+		text-decoration: none;
+	}
+
+	#hang1 dd a:hover,
+	#hang2 dd a:hover {
+		color: #999;
+		text-decoration: underline;
+	}
+
+#sp1 {
+	width: 230px;
+	float: left;
+	text-align: center;
+	color: #CCC;
+}
+
+#sp2 {
+	width: 230px;
+	float: left;
+	text-align: center;
+	color: #CCC;
+}
+
+#sp3 {
+	width: 230px;
+	float: left;
+	text-align: center;
+	color: #CCC;
+}
+
+#hang2 {
+	width: 780px;
+	height: 190px;
+	margin: 5px;
+	padding: 5px;
+}
+
+	#hang2 span {
+		color: #09F;
+	}
+/*zoom ảnh */
+.img-zoom {
+	position: relative;
+	z-index: 0;
+}
+
+	.img-zoom:hover {
+		background-color: transparent;
+		z-index: 50;
+	}
+
+	.img-zoom span {
+		position: absolute;
+		padding: 5px;
+		left: -1000px;
+		border: 2px solid #F60;
+		visibility: hidden;
+		text-decoration: none;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		width: 350px;
+		height: 350px;
+		background: url(image/linkz_menu.png) repeat;
+	}
+
+		.img-zoom span img {
+			border-width: 0;
+			padding: 2px;
+		}
+
+	.img-zoom:hover span {
+		visibility: visible;
+		top: -100px;
+		left: 60px;
+		background: url(../image/linkz_menu.png) repeat;
+	}
+
+	.img-zoom span i:hover {
+		color: #F60;
+	}
+
+	.img-zoom span img:hover {
+		border: 1px solid #000;
+	}
+/*hết zoom ảnh chú thích */
+/*hết cột phải	
+
+/*chân website */
+#footer {
+	width: 100%;
+	height: 150px;
+	background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+	border-top: 4px solid #C87C7C;
+}
+
+	#footer a {
+		margin-left: 3px;
+	}
+
+	#footer p {
+		text-align: center;
+		color: #0F0E0E;
+		margin: 0;
+		padding-top: 5px;
+		font-size: 12px;
+	}
+
+
+/*end bao trang */
+
+
+#dautrang {
+	float: right;
+	width: 100%;
+	height: 28px;
+}
+
+.dautrang1 a {
+	float: right;
+}
+
+.menutren a {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #5f5c5c;
+	padding-right: 20px;
+}
+
+.menutren #mainNav {
+	background-color:#ee9ca7;
+}
+
+/*Giỏ hàng*/
+
+.table&amp;amp;gt;tbody&amp;amp;gt;tr&amp;amp;gt;td, .table&amp;amp;gt;tfoot&amp;amp;gt;tr&amp;amp;gt;td {
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 400px) {
+	table#cart tbody td .form-control {
+		width: 20%;
+		display: inline !important;
+	}
+
+	.actions .btn {
+		width: 36%;
+		margin: 1.5em 0;
+	}
+
+	.actions .btn-info {
+		float: left;
+	}
+
+	.actions .btn-danger {
+		float: right;
+	}
+
+	table#cart thead {
+		display: none;
+	}
+
+	table#cart tbody td {
+		display: block;
+		padding: .3rem;
+		min-width: 120px;
+	}
+
+	table#cart tbody tr td:first-child {
+		background: #333;
+		color: #fff;
+	}
+
+	table#cart tbody td:before {
+		content: attr(data-th);
+		font-weight: bold;
+		display: inline-block;
+		width: 4rem;
+	}
+
+	table#cart tfoot td {
+		display: block;
+	}
+
+		table#cart tfoot td .btn {
+			display: block;
+		}
+}
+
+
+

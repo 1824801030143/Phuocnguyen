@@ -1,0 +1,27 @@
+﻿@model remake.Models.Product
+@{
+    ViewBag.Title = "DeleteProduct";
+    Layout = "~/Views/share/_LayoutPage2.cshtml";
+}
+
+        <h3 style="margin-left:200px;"> Bạn có chắc chắn muốn xóa sản phẩm ?</h3>
+        <div style="margin-left:300px;">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dt>
+            </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <button type="submit" class="btn btn-dark" style="margin-left:0px;">Xóa</button>
+            }
+
+
+            <div style="padding-top:20px;">
+                @Html.ActionLink("Quay về danh sách", "Index")
+            </div>
+        </div>
+
+

@@ -1,0 +1,43 @@
+﻿@model remake.Models.Product
+@using remake.Helper
+    @{
+        ViewBag.Title = "DetailsProduct";
+        Layout = "~/Views/share/_LayoutPage1.cshtml";
+    }
+
+    <div class="section" style="width:1200px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2  col-md-pull-5">
+                    <div id="product-imgs">
+                        <div class="product-preview">
+                            @Html.Image(Model.Image, "image")
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="product-details">
+                        <h2 class="product-name">@Model.ProductName</h2>
+                        <div>
+                            <h3 class="product-price"><span> Giá Sản Phẩm : @Model.Price VNĐ</span></h3>
+                        </div>
+                        @Html.Raw(Model.DESCRIPTION)
+                        
+                        <div class="add-to-cart" style="margin-top:30px;">
+                            <a href="@Url.Action("AddCart","Cart",new {@idpd = Model.ID, @strURL = Request.Url.ToString()})" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+                        </div>
+
+
+                        <ul class="product-links">
+                            <li>Share:</li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

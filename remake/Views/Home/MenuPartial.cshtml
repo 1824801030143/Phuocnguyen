@@ -1,0 +1,23 @@
+﻿@using remake.Models
+@model IEnumerable<Product>
+
+ <ul class="nav" style="margin-left:90px;">
+
+        @foreach (var groupItem in Model.GroupBy(n => n.Category))
+        {
+            if(groupItem.Key != null)
+            { 
+                <li class="nav-item">
+                    <a class="nav-link" href="#">@groupItem.Key.CategoryName</a>
+                    <ul>
+                        @foreach (var item in groupItem.GroupBy(n => n.Provider))
+                        {
+                            <li><a href="@Url.Action("Product","Product", new { @idcate = groupItem.Key.ID,@idpro = item.Key.ID })">@item.Key.Name</a></li>
+                          
+                        }
+
+                    </ul>
+                </li>
+            }
+         }
+ </ul>

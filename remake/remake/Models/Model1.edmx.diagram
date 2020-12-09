@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6b1ce3536db544889486d308b32e2f8b" Name="Diagram1">
+        <EntityTypeShape EntityType="NuocHoaShopModel.Admin" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.Bill" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.Category" Width="1.5" PointX="1.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.FeedBack" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.OrderDetail" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.OrderProduct" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.Product" Width="1.5" PointX="3.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.Provider" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NuocHoaShopModel.UserWeb" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__Admin__IDUser__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__Bill__IDUser__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__Product__IDCateg__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__FeedBack__IDProd__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__FeedBack__IDUser__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__OrderDeta__IDOrd__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__OrderDeta__IDPro__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__OrderProd__IDUse__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="NuocHoaShopModel.FK__Product__IDProvi__15502E78" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

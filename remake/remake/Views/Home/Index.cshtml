@@ -1,0 +1,14 @@
+﻿@using remake.Models;
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/share/_LayoutPage1.cshtml";
+}
+
+@{ 
+    IEnumerable<Product> lstp = ViewBag.Listp as IEnumerable<Product>;
+}
+<div class="container">
+    @Html.Partial("~/Views/Product/ProductstylePartial.cshtml",lstp)
+</div>

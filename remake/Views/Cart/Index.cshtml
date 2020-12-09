@@ -1,0 +1,96 @@
+﻿@using remake.Models;
+@model List<Cart>
+@using remake.Helper
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/share/_LayoutPage1.cshtml";
+}
+
+@if (Model.Count == 0)
+{
+    <h2 style="margin-left:300px;margin-top:50px;">Giỏ hàng rỗng</h2>
+}
+else
+{
+    <div class="container">
+        <div id="shopcart" style="margin:10px;">
+            <table border="0" style=" width:600px;text-align:center;margin-top:30px;margin-bottom:30px;" >
+                <thead style="margin-bottom:30px;">
+                    <tr>
+                        <th style="width:20%"></th>
+                        <th style="margin-left:10px;">Tên Sản Phẩm</th>
+                        <th style="margin-left:10px;">Giá</th>
+                        <th style="width:20%">Số lượng</th>
+                        <th style="10%"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.Image(item.Image, "image", new { @style = "width:30%" })</td>
+                            <td>@item.ProductName</td>
+                            <td>@item.Price</td>
+                            <td>@item.Amount</td>
+                            <td>@Html.ActionLink("Xóa", "DeleteCart", new { @id = item.IDProduct })</td>
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+            <div id="footercart">
+                <a href="~/Home/Index" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+                <strong style="margin-left:300px;">Tổng tiền @ViewBag.TotalMoney.ToString("#,##") đ</strong>
+            </div>
+        </div>
+        <div id="cartorder" style="margin-left:150px;margin-top:50px;">
+            <div class="container">
+                <div class="form-horizontal">
+
+                    @using (Html.BeginForm("OrderProduct", "Cart", FormMethod.Post))
+                    {
+                        if (Session["user"] == null)
+                        {
+                            <div class="form-group">
+                                <h4>Thông Tin Đặt Hàng</h4>
+                            </div>
+                            <div class="form-group">
+                                Họ Tên     :
+                                <div class=" col-md-10">
+                                    @Html.TextBox("Name")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                Địa Chỉ    :
+                                <div class="col-md-10">
+                                    @Html.TextBox("Address")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                Số Điện Thoại :
+                                <div class="col-md-10">
+                                    @Html.TextBox("Phone")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                Email      :
+                                <div class="col-md-10">
+                                    @Html.TextBox("Email")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-success" value="Đặt Hàng">
+                            </div>
+                        }
+                        else
+                        {
+                            <input type="submit" class="btn btn-success" value="Đặt Hàng" style="margin-left:350px;">
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

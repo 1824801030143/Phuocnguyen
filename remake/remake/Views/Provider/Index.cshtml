@@ -1,0 +1,39 @@
+﻿@model IEnumerable<remake.Models.Provider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/share/_LayoutPage2.cshtml";
+}
+
+<h3>Danh sách loại sản phẩm</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.ID }) |
+
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                @Html.ActionLink("Thêm", "Create")
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+

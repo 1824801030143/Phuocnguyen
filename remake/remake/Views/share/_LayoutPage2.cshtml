@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="~/css/admin/font.css" rel="stylesheet" />
+    <link href="~/css/admin/style-responsive.css" rel="stylesheet" />
+    <link href="~/css/admin/style.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <section id="container">
+        <!--header start-->
+        <header class="header fixed-top clearfix">
+            <!--logo start-->
+            <div class="brand">
+                <a href="index.html" class="logo">
+                    Quản Lý
+                </a>
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars"></div>
+                </div>
+            </div>
+            <!--logo end-->
+            <div class="top-nav clearfix">
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <input type="text" class="form-control search" style="border-radius:20px" >
+                    </li>
+                    <li>
+                        <button>Tìm kiếm</button>
+                    </li>
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username">@*@Session["user"].ToString()*@</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <!-- sidebar menu start-->
+                <div class="leftside-navigation">
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li class="sub-menu">
+                            <a href="@Url.Content("~/Product/Index")">
+                                <i class="fa fa-book"></i>
+                                <span>Xem Danh Sách Sản Phẩm</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="@Url.Content("~/Category/Index")">
+                                <i class="fa fa-book"></i>
+                                <span>Xem Danh Sách Loại Sản Phẩm</span>
+                            </a>
+                        </li>
+
+
+                        <li class="sub-menu">
+                            <a href="@Url.Content("~/Provider/Index")">
+                                <i class="fa fa-book"></i>
+                                <span>Xem Danh Sách Nhà Cung Cấp</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="@Url.Content("~/Admin/Index")">
+                                <i class="fa fa-book"></i>
+                                <span>Thống Kê Doanh Thu</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        </section>
+        <!--sidebar end-->
+    <section id="main-content">
+        <div class="wrapper">
+            @RenderBody()
+        </div>
+    </section>
+</body>
+</html>
